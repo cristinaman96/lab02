@@ -1,13 +1,16 @@
-package lab02;
+import lab02.controller.DoctorController;
+import lab02.repository.Repository;
+import lab02.ui.DoctorUI;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+public class App {
+
+	public static void main(String[] args) {
+		String patients = "FilePatients.txt";
+		String consultations = "FileConsultations.txt";
+		Repository repo = new Repository(patients, consultations);
+		DoctorController ctrl = new DoctorController(repo);
+		
+		DoctorUI console = new DoctorUI(ctrl);
+		console.Run();
+	}
 }
