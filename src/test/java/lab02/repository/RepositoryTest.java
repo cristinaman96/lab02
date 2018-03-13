@@ -12,7 +12,7 @@ public class RepositoryTest extends TestCase {
     public void testAddPatient() throws Exception {
 
         assertEquals(1,1);
-        
+
 
     }
 
