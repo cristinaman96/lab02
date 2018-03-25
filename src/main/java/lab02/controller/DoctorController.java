@@ -39,7 +39,7 @@ public class DoctorController {
 		ConsultationList = consultationList;
 	}
 
-	public int getPatientBySSN(String SSN) {
+	private int getPatientBySSN(String SSN) {
 		for (int i = 0; i < PatientList.size(); i++) {
 			if (PatientList.get(i).getSSN().equals(SSN))
 				return i;
@@ -48,7 +48,7 @@ public class DoctorController {
 		return -1;
 	}
 
-	public int getConsByID(int ID) {
+	private int getConsByID(int ID) {
 		for (int i = 0; i < ConsultationList.size(); i++) {
 			if (ConsultationList.get(i).getConsID() == ID) {
 				/*
@@ -115,54 +115,8 @@ public class DoctorController {
 	}
 
 	public List<Patient> getPatientsWithDisease(String disease) throws PatientException {
-		List<Consultation> c = this.getConsultationList();
-		List<Patient> p = new ArrayList<Patient>();
-		if (disease != null) {
-			if (disease.length() == 0) {
-				throw new PatientException("Empty disease provided");
-			}
-			int chk = 1;
 
-			for (int i = 0; i < c.size(); i++) {
-				if (c.get(i).getDiagnostic().toLowerCase()
-						.contains(disease.toLowerCase())) // so that it is case
-				// insensitive
-				{
-					for (int j = 0; j < p.size(); j++) // verify patient was
-					// not already added
-					{
-						if (p.get(j).getSSN().equals(c.get(i).getPatientSSN())) {
-							chk = p.get(j).getConsNum();
-						}
-					}
-
-					if (chk == 1) {
-						p.add(this.getPatientList().get(
-								this.getPatientBySSN(c.get(i).getPatientSSN()))); // get
-						// Patient
-						// by
-						// SSN
-					}
-					chk = 1;
-				}
-			}
-
-			// Sort the list
-
-			Patient paux = new Patient();
-
-			for (int i = 0; i < p.size(); i++)
-				for (int j = i + 1; j < p.size() - 1; j++)
-					if (p.get(j - 1).getConsNum() < p.get(j).getConsNum()) {
-						paux = p.get(j - 1);
-						p.set(j - 1, p.get(j));
-						p.set(j, paux);
-					}
-		}
-		else {
-			throw new PatientException("Null disease parameter provided");
-		}
-		return p;
+		return rep.getPatientsWithDisease(disease);
 	}
 
 	/*
