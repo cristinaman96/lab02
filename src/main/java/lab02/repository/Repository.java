@@ -7,6 +7,7 @@ import java.util.List;
 
 import lab02.exceptions.PatientException;
 import lab02.model.*;
+import lab02.validator.PatientValidation;
 
 
 public class Repository {
@@ -16,6 +17,11 @@ public class Repository {
 
 	private ArrayList<Consultation> consultationList;
 	private ArrayList<Patient> patientList;
+
+	public Repository(){
+        consultationList = new ArrayList<Consultation>();
+        patientList = new ArrayList<Patient>();
+    }
 
 	public Repository(String patients, String consultations)
 	{
@@ -210,7 +216,15 @@ public class Repository {
 		br.close();
 	}
 
-	public void addPatient(Patient p) {
+	public void addPatient(Patient p) throws PatientException {
+
+        if (p.getName() != null && p.getSSN() != null && p.getAddress() != null) {
+            PatientValidation.nameValidate(p.getName());
+            PatientValidation.ssnValidate(p.getSSN());
+            PatientValidation.addressValidate(p.getAddress());
+        } else {
+            throw new PatientException("Null fields");
+        }
 
 		patientList.add(p);
 	}
