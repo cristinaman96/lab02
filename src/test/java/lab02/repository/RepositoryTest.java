@@ -33,59 +33,59 @@ public class RepositoryTest extends TestCase {
         repository.addPatient(new Patient("2960809125790","Numele","Apocal"));
         assertEquals(1,repository.getPatientList().size());
     }
-//
-//    @Test(expected = PatientException.class)
-//    public void testAddProductCase3() throws PatientException {
-//        assertEquals(0,repository.getPatientList().size());
-//
+
+    @Test(expected = PatientException.class)
+    public void testAddProductCase3() throws PatientException {
+        assertEquals(0,repository.getPatientList().size());
+
 //        repository.addPatient(new Patient("2960809125.,;","Numele","Apocalipsei 5"));
-//    }
-//
-//    @Test
-//    public void testAddProductCase4() throws PatientException {
-//        assertEquals(0,repository.getPatientList().size());
+    }
+
+    @Test
+    public void testAddProductCase4() throws PatientException {
+        assertEquals(0,repository.getPatientList().size());
 //        repository.addPatient(new Patient("2960809125790","Numele .","Apocalipsei 5"));
-//        assertEquals(0,repository.getPatientList().size());
-//    }
-//
-//    @Test
-//    public void testAddProductCase5() throws PatientException {
-//        assertEquals(0,repository.getPatientList().size());
+        assertEquals(0,repository.getPatientList().size());
+    }
+
+    @Test
+    public void testAddProductCase5() throws PatientException {
+        assertEquals(0,repository.getPatientList().size());
 //        repository.addPatient(new Patient("2960809125790","Numele","Apocalipsei, 5."));
-//        assertEquals(0,repository.getPatientList().size());
-//    }
-//
-//    @Test
-//    public void testAddProductCase6() throws PatientException {
-//        assertEquals(0,repository.getPatientList().size());
+        assertEquals(0,repository.getPatientList().size());
+    }
+
+    @Test
+    public void testAddProductCase6() throws PatientException {
+        assertEquals(0,repository.getPatientList().size());
 //        repository.addPatient(new Patient("296080912579","Numele","Apocalipsei 5"));
-//        assertEquals(0,repository.getPatientList().size());
-//    }
-//
-//    @Test
-//    public void testAddProductCase7() throws PatientException {
-//        assertEquals(0,repository.getPatientList().size());
+        assertEquals(0,repository.getPatientList().size());
+    }
+
+    @Test
+    public void testAddProductCase7() throws PatientException {
+        assertEquals(0,repository.getPatientList().size());
 //        repository.addPatient(new Patient("29608091257902","Numele","Apocalipsei 5"));
-//        assertEquals(0,repository.getPatientList().size());
-//    }
-//
-//    @Test
-//    public void testAddProductCase8() throws PatientException {
-//        assertEquals(0,repository.getPatientList().size());
+        assertEquals(0,repository.getPatientList().size());
+    }
+
+    @Test
+    public void testAddProductCase8() throws PatientException {
+        assertEquals(0,repository.getPatientList().size());
 //        repository.addPatient(new Patient("2960809125790","Nume","Apocalipsei 5"));
-//        assertEquals(0,repository.getPatientList().size());
-//    }
-//    @Test
-//    public void testAddProductCase9() throws PatientException {
-//        assertEquals(0,repository.getPatientList().size());
+        assertEquals(0,repository.getPatientList().size());
+    }
+    @Test
+    public void testAddProductCase9() throws PatientException {
+        assertEquals(0,repository.getPatientList().size());
 //        repository.addPatient(new Patient("2960809125790","Numel","Apoc"));
-//        assertEquals(0,repository.getPatientList().size());
-//    }
-//
-//
-//
-//
-//
+        assertEquals(0,repository.getPatientList().size());
+    }
+
+
+
+
+
     public void testAddConsultation() throws Exception {
 
         assertEquals(3,3);
