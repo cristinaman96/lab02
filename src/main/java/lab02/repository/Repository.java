@@ -218,13 +218,14 @@ public class Repository {
 
 	public void addPatient(Patient p) throws PatientException {
 
-        if (p.getName() != null && p.getSSN() != null && p.getAddress() != null) {
-            PatientValidation.nameValidate(p.getName());
-            PatientValidation.ssnValidate(p.getSSN());
-            PatientValidation.addressValidate(p.getAddress());
-        } else {
-            throw new PatientException("Null fields");
-        }
+            try {
+                PatientValidation.nameValidate(p.getName());
+                PatientValidation.ssnValidate(p.getSSN());
+                PatientValidation.addressValidate(p.getAddress());
+
+            } catch (PatientException e) {
+                throw new PatientException(e.toString());
+            }
 
 		patientList.add(p);
 	}

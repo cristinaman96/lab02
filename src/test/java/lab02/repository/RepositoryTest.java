@@ -34,11 +34,11 @@ public class RepositoryTest extends TestCase {
         assertEquals(1,repository.getPatientList().size());
     }
 
-    @Test
+    @Test(expected = PatientException.class)
     public void testAddProductCase3() throws PatientException {
         assertEquals(0,repository.getPatientList().size());
+
         repository.addPatient(new Patient("2960809125.,;","Numele","Apocalipsei 5"));
-        assertEquals(0,repository.getPatientList().size());
     }
 
     @Test
