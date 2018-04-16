@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Consultation {
-	private int consID;
 	private String PatientSSN;
 	private String diagnostic;
 	private List<String> medicine;
@@ -15,21 +14,14 @@ public class Consultation {
 		this.medicine = new ArrayList<String>();
 	}
 	
-	public Consultation (int consID, String PatientSSN, String diag, List<String> meds, String date)
+	public Consultation ( String PatientSSN, String diag, List<String> meds, String date)
 	{
-		this.consID = consID;
 		this.PatientSSN = PatientSSN;
 		this.diagnostic = diag;
 		this.medicine = meds;
 		this.consultation_date = date;
 	}
-	
-	public int getConsID() {
-		return consID;
-	}
-	public void setConsID(int v_consID) {
-		consID = v_consID;
-	}
+
 	
 	public String getPatientSSN() {
 		return PatientSSN;
@@ -59,7 +51,6 @@ public class Consultation {
 	@Override
 	public String toString() {
 		return "Consultation{" +
-				"consID=" + consID +
 				", PatientSSN='" + PatientSSN + '\'' +
 				", diagnostic='" + diagnostic + '\'' +
 				", medicine=" + medicine +

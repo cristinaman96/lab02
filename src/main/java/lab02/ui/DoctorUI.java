@@ -1,5 +1,6 @@
 package lab02.ui;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -132,6 +133,8 @@ public class DoctorUI {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (PatientException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				System.out.println("> Consultation (" + consID + ") has been successfully added.");

@@ -101,15 +101,14 @@ public class Repository {
 		while ((line = br.readLine()) != null) {
 			String[] result = line.split(",");
 			Consultation consultation = new Consultation();
-			consultation.setConsID(Integer.getInteger(result[0]));
-			consultation.setPatientSSN(result[1]);
-			consultation.setDiagnostic(result[2]);
-			String[] r = result[3].split(" + ");
+			consultation.setPatientSSN(result[0]);
+			consultation.setDiagnostic(result[1]);
+			String[] r = result[2].split(" + ");
 			ArrayList<String> res = new ArrayList<String>();
 			for (int i = 0; i<r.length; i++)
 				res.add(r[i]);
 			consultation.setMeds(res);
-			consultation.setConsultation_date(result[4]);
+			consultation.setConsultation_date(result[3]);
 			consultationList.add(consultation);
 		}
 		br.close();
@@ -177,27 +176,6 @@ public class Repository {
 
 	public void savePatientToFile(Patient p) throws IOException		// save to file
 	{
-//		int n=0;
-//		BufferedReader in = new BufferedReader(new FileReader(patients));
-//		while((in.readLine())!=null)
-//			n++;
-//		in.close();
-//		String[] sl=new String[n];
-//		String str;
-//		int i=0;
-//		in = new BufferedReader(new FileReader(patients));
-//		while((str=in.readLine())!=null)
-//		{
-//			sl[i] = str;
-//			i++;
-//		}
-//		in.close(); // append
-//		FileWriter fw=new FileWriter(patients);
-//		PrintWriter out=new PrintWriter(fw);
-//		for (i=1; i<sl.length-1; i++)
-//			out.println(sl[i]);
-//		out.println(p.toString());
-//		out.close();
 		FileWriter fileWriter = new FileWriter(patientsFile,true);
 		BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
@@ -213,6 +191,7 @@ public class Repository {
 		BufferedWriter br = new BufferedWriter(fr);
 		br.write(c.toString());
 		br.newLine();
+		br.flush();
 		br.close();
 	}
 
@@ -286,13 +265,5 @@ public class Repository {
 		return -1;
 	}
 
-	private int getConsByID(int ID) {
-		for (int i = 0; i < consultationList.size(); i++) {
-			if (consultationList.get(i).getConsID() == ID) {
-				return i ;
-			}
-		}
 
-		return -1;
-	}
 }

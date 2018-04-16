@@ -48,20 +48,6 @@ public class DoctorController {
 		return -1;
 	}
 
-	private int getConsByID(int ID) {
-		for (int i = 0; i < ConsultationList.size(); i++) {
-			if (ConsultationList.get(i).getConsID() == ID) {
-				/*
-				 * System.out.println("I proud to have found " + ID + " here: "
-				 * + i); System.out.println("Proof : " +
-				 * ConsultationList.get(i).toString());
-				 */
-				return i ;
-			}
-		}
-
-		return -1;
-	}
 
 	public Repository getRepository() {
 		return rep;
@@ -82,19 +68,18 @@ public class DoctorController {
 	// diagnostic, prescription drugs)
 
 	public void addConsultation(int consID, String patientSSN, String diag,
-								List<String> meds, String date) throws ConsultationException, PatientException {
+								List<String> meds, String date) throws ConsultationException, PatientException, IOException {
 		if (meds == null)
 			throw new ConsultationException("meds is null");
 
-		if (consID != 0 && patientSSN != null && diag != null && meds.size() != 0 && this.getPatientBySSN(patientSSN) > -1
-				&& this.getConsByID(consID) == -1) {
+		if (consID != 0 && patientSSN != null && diag != null && meds.size() != 0 && this.getPatientBySSN(patientSSN) > -1) {
 			ConsultationValidation.ssnValidate(patientSSN);
-			Consultation c = new Consultation(consID, patientSSN, diag, meds, date);
+			Consultation c = new Consultation( patientSSN, diag, meds, date);
 			try {
 				rep.addConsultation(c);
 				rep.saveConsultationToFile(c);
 			} catch (IOException e) {
-				e.printStackTrace();
+				throw new IOException(e.toString());
 			}
 
 			Patient p = this.getPatientList().get(this.getPatientBySSN(c.getPatientSSN()));
