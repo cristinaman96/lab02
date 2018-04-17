@@ -92,9 +92,4 @@ public class RepositoryTest extends TestCase {
 
     }
 
-    public void testGetPatientsWithDisease() throws Exception {
-        assertEquals(32,32);
-
-    }
-
 }
